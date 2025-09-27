@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoMaster - Smart Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span>Theme</span>
+            </button>
+            <h1 class="title">TodoMaster</h1>
+            <p class="subtitle">Smart task management with style</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="pendingTasks">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completionRate">0%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+        </div>
+
+        <div class="main-card">
+            <div class="input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        class="task-input" 
+                        id="taskInput" 
+                        placeholder="What needs to be done?" 
+                        maxlength="100"
+                    >
+                    <select class="category-select" id="categorySelect">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="health">Health</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select class="category-select" id="prioritySelect">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <button class="add-btn" onclick="addTodo()">
+                        <span>➕</span>
+                        Add Task
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput" 
+                    placeholder="Search tasks..."
+                    oninput="filterTodos()"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+                <button class="filter-btn" data-filter="pending" onclick="setFilter('pending')">Pending</button>
+                <button class="filter-btn" data-filter="completed" onclick="setFilter('completed')">Completed</button>
+                <button class="filter-btn" data-filter="work" onclick="setFilter('work')">Work</button>
+                <button class="filter-btn" data-filter="personal" onclick="setFilter('personal')">Personal</button>
+                <button class="filter-btn" data-filter="health" onclick="setFilter('health')">Health</button>
+                <button class="filter-btn" data-filter="shopping" onclick="setFilter('shopping')">Shopping</button>
+                <button class="filter-btn" data-filter="other" onclick="setFilter('other')">Other</button>
+            </div>
+
+            <div class="todos-container" id="todosContainer">
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">📝</div>
+                    <p>No tasks yet. Add your first task above!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+
+
+</body>
